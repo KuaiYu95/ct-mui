@@ -17,13 +17,18 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org/'
 
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: 安装依赖
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: 构建
-        run: npm run build
+        run: pnpm run build
 
       - name: 发布到 NPM
-        run: npm publish
+        run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
