@@ -1,6 +1,6 @@
 {
   "name": "ct-mui",
-  "version": "1.0.1-beta.1",
+  "version": "1.0.1-beta.2",
   "description": "基于 material-ui 组件库",
   "license": "MIT",
   "main": "dist/index.js",
