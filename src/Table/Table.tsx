@@ -1,17 +1,17 @@
+import { styled } from '@mui/material';
 import React, {
-  useMemo,
   forwardRef,
   useEffect,
-  useRef,
   useImperativeHandle,
+  useMemo,
+  useRef,
 } from 'react';
 import { TableVirtuosoHandle } from 'react-virtuoso';
-import { styled } from '@mui/material';
 import TableContext from './context';
 
-import type { TableProps } from './type';
 import Pagination from '../Pagination';
 import NTable from './NTable';
+import type { TableProps } from './type';
 import VTable from './VTable';
 
 interface TableWrapProps {
@@ -25,7 +25,7 @@ type RefType = Partial<TableVirtuosoHandle> & Partial<HTMLDivElement>;
 
 export type RefTable = <RecordType extends object = any>(
   props: React.PropsWithChildren<TableProps<RecordType>> & {
-    ref?: RefType;
+    ref?: HTMLDivElement | null;
   },
 ) => React.ReactElement;
 
@@ -41,7 +41,7 @@ type AnyObject = Record<PropertyKey, any>;
 
 const InternalTable = <RecordType extends AnyObject = any>(
   props: TableProps<RecordType>,
-  ref: React.MutableRefObject<RefType>,
+  ref: React.ForwardedRef<RefType>,
 ) => {
   const {
     height,
@@ -80,9 +80,8 @@ const InternalTable = <RecordType extends AnyObject = any>(
   const wrapRef = useRef<RefType | null>(null);
 
   const tableHeight = useMemo(() => {
-    return `calc(100% - ${
-      paginationProps && dataSource.length !== 0 ? '54px' : '0px'
-    })`;
+    return `calc(100% - ${paginationProps && dataSource.length !== 0 ? '54px' : '0px'
+      })`;
   }, [paginationProps]);
 
   const onPaginationChange = (page: number, pageSize: number) => {

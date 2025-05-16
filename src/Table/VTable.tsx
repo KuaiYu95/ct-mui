@@ -1,25 +1,25 @@
-import React, { forwardRef, useMemo, useContext, useRef } from 'react';
+import React, { forwardRef, useContext, useMemo, useRef } from 'react';
 
 import {
   Table as MuiTable,
+  Skeleton,
   TableBody,
   TableContainer,
   TableHead,
   TableRow,
-  Skeleton,
 } from '@mui/material';
 import TableContext from './context';
 
-import THeader from './THeader';
 import TEmpty from './TEmpty';
+import THeader from './THeader';
 
 import {
-  TableVirtuoso,
   TableComponents,
+  TableVirtuoso,
   TableVirtuosoHandle,
 } from 'react-virtuoso';
-import TCell from './TCell';
 import Row from './RowContent';
+import TCell from './TCell';
 
 const VTable = forwardRef<TableVirtuosoHandle>((props, ref) => {
   const { height, columns, dataSource, loading, size, showHeader } =
@@ -43,7 +43,9 @@ const VTable = forwardRef<TableVirtuosoHandle>((props, ref) => {
     Table: (props: any) => (
       <MuiTable {...props} sx={{ tableLayout: 'fixed' }} />
     ),
-    TableHead,
+    TableHead: forwardRef<HTMLTableSectionElement>((props, ref) => (
+      <TableHead {...props} ref={ref} />
+    )),
     TableRow,
     TableBody: forwardRef<HTMLTableSectionElement>((props, ref) =>
       dataSource.length === 0 && !loading ? (

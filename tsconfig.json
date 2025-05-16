@@ -12,7 +12,9 @@
       "@@/*": [".dumi/tmp/*"],
       "ct-mui": ["src"],
       "ct-mui/*": ["src/*", "*"]
-    }
+    },
+    "emitDeclarationOnly": false,
+    "declarationDir": "./dist/types"
   },
   "include": [".dumi/**/*", ".dumirc.ts", "src/**/*"]
 }

@@ -7,7 +7,7 @@ import ThemeProvider from '../ThemeProvider';
 
 import Modal, { type ModalProps } from './Modal';
 
-export interface ConfirmDialogProps extends ModalProps {
+export interface ConfirmDialogProps extends Omit<ModalProps, 'content'> {
   content?: React.ReactNode;
   icon?: React.ReactNode;
 }

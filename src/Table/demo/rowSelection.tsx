@@ -67,8 +67,7 @@ export default () => {
   return (
     <ThemeProvider>
       <Table
-        ref={domRef}
-        // showHeader={false}
+        ref={domRef as any}
         size="large"
         height="400px"
         virtual={true}
