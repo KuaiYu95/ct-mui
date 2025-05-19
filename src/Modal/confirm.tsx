@@ -1,5 +1,6 @@
-import { render as reactRender } from '../utils';
+'use client';
 import React from 'react';
+import { render as reactRender } from '../utils';
 import ConfirmDialog, { type ConfirmDialogProps } from './ConfirmDialog';
 
 type ConfigUpdate =

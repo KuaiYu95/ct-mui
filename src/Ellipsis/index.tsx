@@ -1,11 +1,12 @@
-import React, { type FC, useRef, useState } from 'react';
+'use client';
+import React, { useRef, useState, type FC } from 'react';
 
 import {
   Box,
+  BoxProps,
   Tooltip,
   styled,
   type TooltipProps,
-  BoxProps,
 } from '@mui/material';
 
 interface EllipsisProps extends Omit<TooltipProps, 'children' | 'title'> {

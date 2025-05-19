@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
+    "lib": ["ES2021", "dom"],
     "strict": true,
-    "target": "es6",
-    "moduleResolution": "node",
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -12,9 +11,7 @@
       "@@/*": [".dumi/tmp/*"],
       "ct-mui": ["src"],
       "ct-mui/*": ["src/*", "*"]
-    },
-    "emitDeclarationOnly": false,
-    "declarationDir": "./dist/types"
+    }
   },
-  "include": [".dumi/**/*", ".dumirc.ts", "src/**/*"]
+  "include": [".dumirc.ts", "src/**/*"]
 }

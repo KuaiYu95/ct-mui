@@ -1,3 +1,4 @@
+'use client';
 import { type ConfirmDialogProps } from './ConfirmDialog';
 import OriginModal from './Modal';
 import confirm from './confirm';

@@ -12,12 +12,11 @@ export default function themePalette(
     info: color.info,
     success: color.success,
     warning: color.warning,
-    neutral: color.neutral,
     error: color.error,
+    neutral: color.neutral,
     divider: color.divider,
     text: color.text,
     background: color.background,
-    table: color.table,
     charts: color.charts,
     action: {
       selectedOpacity: 0.3,

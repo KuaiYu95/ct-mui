@@ -1,5 +1,6 @@
-import React, { useState, useMemo, useContext } from 'react';
-import { TableRow, TableSortLabel, Checkbox } from '@mui/material';
+'use client';
+import { Checkbox, TableRow, TableSortLabel } from '@mui/material';
+import React, { useContext, useMemo, useState } from 'react';
 import TCell from './TCell';
 import TableContext from './context';
 

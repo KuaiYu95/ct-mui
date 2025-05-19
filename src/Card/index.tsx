@@ -1,12 +1,13 @@
+'use client';
 import React, { type FC } from 'react';
 
 import {
   Box,
   Paper,
   Stack,
+  StackProps,
   styled,
   type PaperProps,
-  StackProps,
 } from '@mui/material';
 
 interface CardProps extends Omit<PaperProps, 'title'> {

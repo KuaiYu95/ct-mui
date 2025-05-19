@@ -1,9 +1,3 @@
-
-# ct-mui
-
-[![NPM version](https://img.shields.io/npm/v/ct-mui.svg?style=flat)](https://npmjs.org/package/ct-mui)
-[![NPM downloads](http://img.shields.io/npm/dm/ct-mui.svg?style=flat)](https://npmjs.org/package/ct-mui)
-
 基于 material-ui 组件库
 
 ## Usage
@@ -39,4 +33,3 @@ $ pnpm run doctor
 ## LICENSE
 
 MIT
-

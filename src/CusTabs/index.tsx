@@ -1,6 +1,7 @@
-import React, { type FC, useState, useEffect } from 'react';
+'use client';
+import React, { useEffect, useState, type FC } from 'react';
 
-import { Tabs, Tab, type SxProps } from '@mui/material';
+import { Tab, Tabs, type SxProps } from '@mui/material';
 
 interface ListItem {
   label: React.ReactNode;

@@ -1,6 +1,9 @@
+import { createTheme } from '@mui/material';
+import { zhCN } from '@mui/material/locale';
 import { Table, ThemeProvider } from 'ct-mui';
 import { ColumnsType } from 'ct-mui/src/Table';
 import React, { useEffect, useRef, useState } from 'react';
+import { zhCN as cZhCN } from '../../local';
 
 interface DataType {
   key: string;
@@ -65,9 +68,24 @@ export default () => {
     onChange: onSelectChange,
   };
   return (
-    <ThemeProvider>
+    <ThemeProvider
+      theme={createTheme(
+        {
+          cssVariables: true,
+          palette: {
+            primary: {
+              main: '#1976d2',
+            },
+          },
+        },
+        zhCN,
+        cZhCN,
+      )}
+    >
       <Table
-        ref={domRef as any}
+        // @ts-ignore
+        ref={domRef}
+        // showHeader={false}
         size="large"
         height="400px"
         virtual={true}

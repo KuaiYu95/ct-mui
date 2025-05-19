@@ -1,3 +1,4 @@
+'use client';
 import React, { type FC } from 'react';
 
 import ErrorIcon from '@mui/icons-material/Error';

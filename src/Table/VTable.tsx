@@ -1,3 +1,4 @@
+'use client';
 import React, { forwardRef, useContext, useMemo, useRef } from 'react';
 
 import {
@@ -27,6 +28,7 @@ const VTable = forwardRef<TableVirtuosoHandle>((props, ref) => {
 
   const data = useMemo(() => {
     if (loading) {
+      // @ts-ignore
       return [...new Array(Math.min(dataSource.length || 0, 40) || 10).keys()];
     } else {
       if (dataSource.length === 0) {
@@ -36,6 +38,7 @@ const VTable = forwardRef<TableVirtuosoHandle>((props, ref) => {
     }
   }, [loading, dataSource]);
 
+  // @ts-ignore
   const VirtuosoTableComponents = useRef<TableComponents<any>>({
     Scroller: forwardRef<HTMLDivElement>((props, ref) => (
       <TableContainer {...props} ref={ref} />
@@ -43,9 +46,7 @@ const VTable = forwardRef<TableVirtuosoHandle>((props, ref) => {
     Table: (props: any) => (
       <MuiTable {...props} sx={{ tableLayout: 'fixed' }} />
     ),
-    TableHead: forwardRef<HTMLTableSectionElement>((props, ref) => (
-      <TableHead {...props} ref={ref} />
-    )),
+    TableHead,
     TableRow,
     TableBody: forwardRef<HTMLTableSectionElement>((props, ref) =>
       dataSource.length === 0 && !loading ? (

@@ -1,4 +1,5 @@
-import React, { type FC, useState } from 'react';
+'use client';
+import React, { useState, type FC } from 'react';
 
 import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined';
 import { Box, Button, ClickAwayListener, Stack, Tooltip } from '@mui/material';

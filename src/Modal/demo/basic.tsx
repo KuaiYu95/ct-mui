@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { Modal, ThemeProvider, colors } from 'ct-mui';
+import { Modal, ThemeProvider } from 'ct-mui';
 import React, { useState } from 'react';
 
 const App: React.FC = () => {
@@ -27,7 +27,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <ThemeProvider colors={colors}>
+    <ThemeProvider>
       <Button variant="contained" onClick={showModal}>
         Open Modal
       </Button>

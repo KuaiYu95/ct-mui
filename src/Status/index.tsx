@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 
-import { Box, styled, type BoxProps, alpha } from '@mui/material';
+import { Box, alpha, styled, type BoxProps } from '@mui/material';
 
 interface StatusProps extends BoxProps {
   children?: React.ReactNode;

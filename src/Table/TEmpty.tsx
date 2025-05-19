@@ -1,8 +1,9 @@
-import React, { useContext, useMemo } from 'react';
+'use client';
 import { TableRow } from '@mui/material';
+import React, { useContext, useMemo } from 'react';
 import Empty from '../Empty';
-import TableContext from './context';
 import TCell from './TCell';
+import TableContext from './context';
 
 const TEmpty = () => {
   const { dataSource, columns, size, renderEmpty, loading } =

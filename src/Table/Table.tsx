@@ -1,3 +1,4 @@
+'use client';
 import { styled } from '@mui/material';
 import React, {
   forwardRef,
@@ -11,8 +12,8 @@ import TableContext from './context';
 
 import Pagination from '../Pagination';
 import NTable from './NTable';
-import type { TableProps } from './type';
 import VTable from './VTable';
+import type { TableProps } from './type';
 
 interface TableWrapProps {
   ownerState: {
@@ -25,7 +26,7 @@ type RefType = Partial<TableVirtuosoHandle> & Partial<HTMLDivElement>;
 
 export type RefTable = <RecordType extends object = any>(
   props: React.PropsWithChildren<TableProps<RecordType>> & {
-    ref?: HTMLDivElement | null;
+    ref?: RefType;
   },
 ) => React.ReactElement;
 
@@ -41,7 +42,7 @@ type AnyObject = Record<PropertyKey, any>;
 
 const InternalTable = <RecordType extends AnyObject = any>(
   props: TableProps<RecordType>,
-  ref: React.ForwardedRef<RefType>,
+  ref: React.MutableRefObject<RefType>,
 ) => {
   const {
     height,
@@ -80,8 +81,9 @@ const InternalTable = <RecordType extends AnyObject = any>(
   const wrapRef = useRef<RefType | null>(null);
 
   const tableHeight = useMemo(() => {
-    return `calc(100% - ${paginationProps && dataSource.length !== 0 ? '54px' : '0px'
-      })`;
+    return `calc(100% - ${
+      paginationProps && dataSource.length !== 0 ? '54px' : '0px'
+    })`;
   }, [paginationProps]);
 
   const onPaginationChange = (page: number, pageSize: number) => {
@@ -131,6 +133,7 @@ const InternalTable = <RecordType extends AnyObject = any>(
   );
 };
 
+// @ts-ignore
 const Table = forwardRef(InternalTable) as unknown as RefTable;
 
 export default Table;

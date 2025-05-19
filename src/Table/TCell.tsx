@@ -1,5 +1,6 @@
-import React from 'react';
+'use client';
 import { styled, TableCell, TableCellProps } from '@mui/material';
+import React from 'react';
 
 interface TCellRootProps {
   ownerState?: {

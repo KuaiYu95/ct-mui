@@ -1,3 +1,4 @@
+'use client';
 import React, { type FC } from 'react';
 
 import { Box, CircularProgress, type SxProps } from '@mui/material';

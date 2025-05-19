@@ -1,4 +1,5 @@
-import React, { type FC, useRef } from 'react';
+'use client';
+import React, { useRef, type FC } from 'react';
 
 import { Box } from '@mui/material';
 

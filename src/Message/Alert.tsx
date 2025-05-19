@@ -1,4 +1,5 @@
-import React, { type FC, useRef, useEffect } from 'react';
+'use client';
+import React, { useEffect, useRef, type FC } from 'react';
 
 import { Alert as MAlert, type AlertColor } from '@mui/material';
 

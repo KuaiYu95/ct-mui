@@ -1,28 +1,33 @@
+'use client';
 import React, { type FC } from 'react';
 
-import { Box, styled, Stack, type StackProps } from '@mui/material';
+import { Box, Stack, styled, type StackProps } from '@mui/material';
+import useDefaultProps from '../hooks/useDefaultProps';
 import DefaultEmptyImg from './empty';
 
-interface EmptyProps extends StackProps {
+export interface EmptyProps extends StackProps {
   image?: React.ReactNode;
   description?: React.ReactNode;
   imageStyle?: React.CSSProperties;
+  labelEmpty?: string;
 }
 
 const EmptyRoot = styled(Stack)(() => ({
   height: '100%',
 }));
 
-const Empty: FC<EmptyProps> = (props) => {
+const Empty: FC<EmptyProps> = (inProps) => {
+  const props = useDefaultProps(inProps, 'CuiEmpty');
+  const { labelEmpty, ...omitLabelEmptyProps } = props;
   const {
     image = <DefaultEmptyImg sx={{ fontSize: '100px' }} />,
     description = (
-      <Box sx={{ color: 'text.auxiliary', fontSize: '14px' }}>暂无数据</Box>
+      <Box sx={{ color: 'text.auxiliary', fontSize: '14px' }}>{labelEmpty}</Box>
     ),
     imageStyle,
     className = '',
     ...other
-  } = props;
+  } = omitLabelEmptyProps;
 
   let imageNode: React.ReactNode = null;
   const alt = typeof description === 'string' ? description : 'empty';

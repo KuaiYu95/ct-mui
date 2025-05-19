@@ -9,9 +9,24 @@ group:
 采用分页的形式分隔长列表，每次只加载一个页面。
 
 ```jsx
-import { Pagination } from 'ct-mui';
+import { Pagination, ThemeProvider } from 'ct-mui';
+import { createTheme } from '@mui/material';
 
-export default () => <Pagination total={100} page={1} />;
+export default () => (
+  <ThemeProvider
+    theme={createTheme({
+      cssVariables: true,
+      palette: {
+        primary: {
+          main: '#206CFF',
+        },
+      },
+    })}
+  >
+    {' '}
+    <Pagination total={100} page={1} />{' '}
+  </ThemeProvider>
+);
 ```
 
 ## API

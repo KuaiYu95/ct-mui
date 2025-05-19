@@ -1,4 +1,6 @@
-import React, { type FC, useEffect, useRef, useState } from 'react';
+'use client';
+
+import React, { useEffect, useRef, useState, type FC } from 'react';
 
 import { Box, type SxProps } from '@mui/material';
 

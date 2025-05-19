@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
-import TCell from './TCell';
+'use client';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { TableRow, IconButton, Collapse, Checkbox } from '@mui/material';
+import { Checkbox, Collapse, IconButton, TableRow } from '@mui/material';
+import React, { useContext, useState } from 'react';
+import TCell from './TCell';
 
 import TableContext from './context';
 

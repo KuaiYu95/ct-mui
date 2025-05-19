@@ -1,6 +1,7 @@
-import React, { useState, forwardRef, useImperativeHandle } from 'react';
+'use client';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
 
-import { Snackbar, Box, type AlertColor } from '@mui/material';
+import { Box, Snackbar, type AlertColor } from '@mui/material';
 
 import ThemeProvider from '../ThemeProvider';
 import { render, unmount } from '../utils';
@@ -26,7 +27,16 @@ function getUuid() {
   return `ctMessage_${now}_${id}`;
 }
 
-const Message = forwardRef<any, MessageProps>((props, ref) => {
+type MessageType = React.ForwardRefExoticComponent<
+  Pick<MessageProps, string> & React.RefAttributes<any>
+> & {
+  newInstance: (
+    properties: MessageProps,
+    callback: (instance: any) => void,
+  ) => void;
+};
+
+const MessageComponent = forwardRef<any, MessageProps>((props, ref) => {
   const [notices, setNotices] = useState<Notice[]>([]);
   const add = (notice: Notice) => {
     const key = notice.key ?? getUuid();
@@ -66,7 +76,8 @@ const Message = forwardRef<any, MessageProps>((props, ref) => {
   );
 });
 
-// @ts-ignore
+const Message: MessageType = MessageComponent as MessageType;
+
 Message.newInstance = (properties: MessageProps, callback) => {
   const { ...props } = properties || {};
   const div = document.createElement('div');

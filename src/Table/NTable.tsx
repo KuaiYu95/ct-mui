@@ -1,9 +1,10 @@
-import React, { useContext, forwardRef } from 'react';
+'use client';
+import React, { forwardRef, useContext } from 'react';
 
 import { Table as MuiTable, TableContainer, TableHead } from '@mui/material';
-import TableContext from './context';
-import THeader from './THeader';
 import TBody from './TBody';
+import THeader from './THeader';
+import TableContext from './context';
 
 const NTable = forwardRef<HTMLDivElement>((props, ref) => {
   const { height, showHeader } = useContext(TableContext);

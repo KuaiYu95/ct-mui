@@ -1,3 +1,4 @@
+'use client';
 import React, { cloneElement, useState, type FC } from 'react';
 
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -8,7 +9,7 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  SxProps
+  SxProps,
 } from '@mui/material';
 
 interface Item {

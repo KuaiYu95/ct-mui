@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 
 import {
@@ -6,11 +7,12 @@ import {
   Pagination as MuiPagination,
   Select,
   Stack,
-  styled,
   TextField,
-  type StackProps,
+  styled,
   type PaginationProps as MuiPaginationProps,
+  type StackProps,
 } from '@mui/material';
+import useDefaultProps from '../hooks/useDefaultProps';
 
 export interface PaginationProps extends Omit<StackProps, 'onChange'> {
   total: number;
@@ -19,6 +21,9 @@ export interface PaginationProps extends Omit<StackProps, 'onChange'> {
   pageSizeOptions?: number[];
   onChange?: (page: number, pageSize: number) => void;
   PaginationProps?: MuiPaginationProps;
+  getLabelPerPage?(value: string | number): string;
+  labelPages?: string;
+  labelGoTo?: string;
 }
 
 const PaginationRoot = styled(Stack, {
@@ -28,7 +33,8 @@ const PaginationRoot = styled(Stack, {
   fontSize: '14px',
 }));
 
-const Pagination: React.FC<PaginationProps> = (props) => {
+const Pagination: React.FC<PaginationProps> = (inProps) => {
+  const props = useDefaultProps(inProps, 'CuiPagination');
   const [push, setPush] = useState<string>('');
   const {
     total,
@@ -37,8 +43,12 @@ const Pagination: React.FC<PaginationProps> = (props) => {
     pageSizeOptions = [10, 20, 50, 100],
     onChange,
     PaginationProps,
+    getLabelPerPage = (value) => `items per page, total ${value} items`,
+    labelPages = 'pages',
+    labelGoTo = 'Go to',
     ...other
   } = props;
+
   return (
     <PaginationRoot
       justifyContent="space-between"
@@ -59,7 +69,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
           ))}
         </Select>
         <Box sx={{ ml: '12px', color: 'text.auxiliary' }} component="span">
-          条每页, 共 {total} 条
+          {getLabelPerPage(total)}
         </Box>
       </Box>
       <Stack alignItems="center" direction="row" spacing={'12px'}>
@@ -77,7 +87,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             color: 'text.auxiliary',
           }}
         >
-          <span className="pre-input-text">跳至</span>
+          <span className="pre-input-text">{labelGoTo}</span>
           <TextField
             autoComplete="off"
             value={push}
@@ -95,7 +105,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
             }}
           />
           <span className="aft-input-text">
-            / {Math.ceil(total / pageSize)} 页
+            / {Math.ceil(total / pageSize)} {labelPages}
           </span>
         </Stack>
       </Stack>
